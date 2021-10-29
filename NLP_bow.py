@@ -4,10 +4,10 @@ okt=Okt()
 
 # .제거
 token=re.sub("(\.)","","한국폴리텍대학 서울강섴맴퍼스 데이터분석과 이협건 교수는 "
-                      "한국폴리텍대학에서 데이터분석 과목과 인공지능 과목을 교육하는 교수이다.")
+                       "한국폴리텍대학에서 데이터분석 과목과 인공지능 과목을 교육하는 교수이다.")
 
 # 형태소 단위로 나누기
-token = okt.morphs(token)
+token=okt.morphs(token)
 
 word2index={} # 인덱스 저장
 bow=[] # Bow 저장
@@ -23,12 +23,12 @@ for word in token:
         # Bow 전체에 전부 기본값 1을 넣어줍니다. 단어의 개수는 최소 1개 이상이기 때문
         bow.insert(len(word2index)-1,1)
 
-else:
-    # 재등장하는 단어의 인덱스 가져오기
-    index=word2index.get(word)
+    else:
+        # 재등장하는 단어의 인덱스 가져오기
+        index=word2index.get(word)
 
-    # 재등장한 단어는 해당하는 인덱스의 위치에 1을 더해줍니다. (단어의 개수를 세는 것)
-    bow[index]=bow[index]+1
+        # 재등장한 단어는 해당하는 인덱스의 위치에 1을 더해줍니다. (단어의 개수를 세는 것)
+        bow[index]=bow[index]+1
 
 # 생성된 인덱스 출력
 print(word2index)
